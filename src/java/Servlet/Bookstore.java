@@ -6,6 +6,7 @@ package Servlet;
  * and open the template in the editor.
  */
 
+import Objects.ShoppingCart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,14 +14,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Bookstore
- */
 @WebServlet(urlPatterns = {"/Bookstore"})
 public class Bookstore extends HttpServlet {
 
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -73,6 +72,11 @@ public class Bookstore extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        ShoppingCart cart = (ShoppingCart)session.getAttribute("cart");
+        String strAdd = request.getParameter("Action");
+        
         processRequest(request, response);
     }
 

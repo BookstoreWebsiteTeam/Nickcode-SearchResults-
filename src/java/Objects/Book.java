@@ -1,4 +1,5 @@
 package Objects;
+import Exceptions.StockException;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -26,6 +27,7 @@ public class Book implements Serializable{
     private double rentalPrice;
     private double ebookPrice;
     private String description;
+    private String isbnForCovers;
 
     public long getIsbn() {
         return isbn;
@@ -169,6 +171,14 @@ public class Book implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getIsbnForCovers() {
+        return isbnForCovers;
+    }
+
+    public void setIsbnForCovers(String isbnForCovers) {
+        this.isbnForCovers = isbnForCovers;
     }
 
     public void changeNewQuantity(int orderQuantity) throws StockException

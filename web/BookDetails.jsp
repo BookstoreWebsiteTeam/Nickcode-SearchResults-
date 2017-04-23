@@ -77,7 +77,7 @@
                     <table border="1px">
                         <tr>
                             <td>
-                                <form action="Bookstore" method="post">
+                                <form action='${pageContext.request.contextPath}/Bookstore}' method="post">
                                     <input type="submit" value="Buy NEW" name="BuyNew" />                                
                             </td>
                         </tr>
@@ -100,7 +100,7 @@
                     <table border="1px">
                         <tr>
                             <td>
-                                <form action="Bookstore" method="post">
+                                <form action='${pageContext.request.contextPath}/Bookstore}' method="post">
                                     <input type="submit" value="Buy USED" name="BuyUsed" />                                
                             </td>
                         </tr>
@@ -123,7 +123,7 @@
                     <table border="1px">
                         <tr>
                             <td>
-                                <form action="Bookstore" method="post">
+                                <form action='${pageContext.request.contextPath}/Bookstore}' method="post">
                                 <input type="submit" value="Buy RENTAL" name="BuyRental" />                                
                             </td>
                         </tr>
@@ -146,7 +146,7 @@
                     <table border="1px">
                         <tr>
                             <td>
-                                <form action="Bookstore" method="post">
+                                <form action='${pageContext.request.contextPath}/Bookstore}' method="post">
                                 <input type="submit" value="Buy Ebook" name="BuyEbook" />
                             </td>
                         </form>
