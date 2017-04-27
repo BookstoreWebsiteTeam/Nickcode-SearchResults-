@@ -50,7 +50,7 @@
         <br><br>
         <%
             //TEST DATA
-        /*long isbn = 9780073376356L;
+        long isbn = 9780073376356L;
         String authors[] = new String[2];
         authors[0] = "Jesse Pinkman";
         authors[1] = "Bugs Bunny";
@@ -267,10 +267,10 @@
         Searchlist.add(test8);
         Searchlist.add(test9);
         Searchlist.add(test10);
-        Searchlist.add(test11);*/
+        Searchlist.add(test11);
         
         //grabbing the search results from the session
-        ArrayList<Book> r = (ArrayList<Book>)request.getSession().getAttribute("results");
+        ArrayList<Book> r = Searchlist;//(ArrayList<Book>)request.getSession().getAttribute("results");
         SearchResults sr;
         if(r != null && r.size() > 0){//making sure it is not null
             sr= new SearchResults(r);
@@ -294,7 +294,7 @@
         else{
             sr = new SearchResults();}//if there are no results initializing a null class.
         
-        //SearchResults sr = new SearchResults(Searchlist);//used only for testing
+        
         
         String index = request.getParameter("search");//stores what page# for browsing the search results
         int indexNum =0;
