@@ -8,10 +8,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%  String rnum;
-    rnum = request.getParameter("get");
+    rnum = request.getParameter("get");//this variable is used to grab the correct book from search results.
     Book b = (Book)request.getSession().getAttribute("result"+rnum);
-    session.setAttribute("book", b);
-    session.setAttribute("rnum", rnum);%>
+    session.setAttribute("book", b);//adds this book to the session when the page is loaded in case the user decides to buy it.
+    session.setAttribute("rnum", rnum);//stores this variable so the controller can come back to this page.%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

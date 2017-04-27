@@ -50,7 +50,7 @@
         <br><br>
         <%
             //TEST DATA
-        long isbn = 9780073376356L;
+        /*long isbn = 9780073376356L;
         String authors[] = new String[2];
         authors[0] = "Jesse Pinkman";
         authors[1] = "Bugs Bunny";
@@ -267,14 +267,15 @@
         Searchlist.add(test8);
         Searchlist.add(test9);
         Searchlist.add(test10);
-        Searchlist.add(test11);
+        Searchlist.add(test11);*/
         
+        //grabbing the search results from the session
         ArrayList<Book> r = (ArrayList<Book>)request.getSession().getAttribute("results");
         SearchResults sr;
-        if(r != null && r.size() > 0){
+        if(r != null && r.size() > 0){//making sure it is not null
             sr= new SearchResults(r);
             String searchType = (String)request.getSession().getAttribute("SearchType");
-            int st = Integer.parseInt(searchType);
+            int st = Integer.parseInt(searchType);//checking to see how to SORT the results
             switch(st){
                 case 0:
                     sr.sortByTitle();
@@ -291,10 +292,11 @@
             }
         }
         else{
-            sr = new SearchResults();}
+            sr = new SearchResults();}//if there are no results initializing a null class.
+        
         //SearchResults sr = new SearchResults(Searchlist);//used only for testing
         
-        String index = request.getParameter("search");//stores 
+        String index = request.getParameter("search");//stores what page# for browsing the search results
         int indexNum =0;
         int pages;
         int upperBound;
@@ -302,6 +304,8 @@
         if(sr.getSize() % 10 != 0)
             pages++;
         
+        //Checks to see if this is the first page of search results or not.
+        //Then makes sure the correct page is loaded before constructing the page.
         if(index != null && Integer.parseInt(index)>0){
         indexNum= Integer.parseInt(index)-1;
         if(indexNum*10+10>sr.getSize())
@@ -311,10 +315,11 @@
         for(int i= (indexNum*10); i< upperBound;i++){
             String isbn1;
             String isbn2;
-            String ISBN = String.valueOf(Searchlist.get(i).getIsbn());
+            String ISBN = String.valueOf(sr.getResults().get(i).getIsbn());
             isbn1 = ISBN.substring(0, 3);
             isbn2 = ISBN.substring(3, ISBN.length());
-            request.getSession().setAttribute("result"+i, Searchlist.get(i)); %>
+            //adds each book found to the session.
+            request.getSession().setAttribute("result"+i, sr.getResults().get(i)); %>
             <table align="center" style="margin: 0px auto;" border="5px">
             <td width="133px">
                                      
@@ -423,10 +428,11 @@
         for(int i=0; i<10;i++){
             String isbn1;
             String isbn2;
-            String ISBN = String.valueOf(Searchlist.get(i).getIsbn());
+            String ISBN = String.valueOf(sr.getResults().get(i).getIsbn());
             isbn1 = ISBN.substring(0, 3);
             isbn2 = ISBN.substring(3, ISBN.length());
-            request.getSession().setAttribute("result"+i, Searchlist.get(i));
+        //adds each book found to the session.
+            request.getSession().setAttribute("result"+i, sr.getResults().get(i));
         %>
         
         <%-- RESULT ENTRY TABLE --%>
