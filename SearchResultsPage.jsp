@@ -563,7 +563,7 @@
             <% for(int i = 1; i <= pages; i++){ %>
                 <a href="SearchResultsPage.jsp?search=<%out.println(i);%>">
                     <% if(i==indexNum+1)
-                        out.println("["+i+"]");
+                         out.println("["+i+"]");
                     else
                         out.println(i);
                     %>
