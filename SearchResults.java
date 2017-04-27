@@ -20,15 +20,17 @@ public class SearchResults {
     int size;
     
     public SearchResults(){
-        int size =-1;
+        size =-1;
     }
     
     public SearchResults(ArrayList<Book> results){
         Results = results;
+        size =-1;
     }
     
     public SearchResults(Book result){
         Result = result;
+        size =-1;
     }
     
     public ArrayList<Book> getResults(){
